@@ -1,0 +1,22 @@
+{
+  "name": "voting-dojo",
+  "version": "1.0.0",
+  "description": "Create and vote on polls",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server",
+    "nodemon": "nodemon server"
+  },
+  "author": "Jake Avery",
+  "license": "MIT",
+  "dependencies": {
+    "config": "^3.3.1",
+    "express": "^4.17.1",
+    "express-validator": "^6.6.1",
+    "mongoose": "^5.10.6"
+  },
+  "devDependencies": {
+    "concurrently": "^5.3.0",
+    "nodemon": "^2.0.4"
+  }
+}
