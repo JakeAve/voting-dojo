@@ -32,16 +32,13 @@ router.get('/:pollId', async (req, res) => {
 router.post(
   '/',
   [
-    body('question', 'Question is required')
+    body('question', 'Your question needs more than 10 characters')
       .not()
       .isEmpty()
       .trim()
       .escape()
       .isLength({ min: 10 }),
-    body('options', 'Must be between 2 and 20 options').isLength({
-      min: 2,
-      max: 20,
-    }),
+    body('options', 'You need to enter between 2 and 20 options'),
     body('options.*', 'Option is required').not().isEmpty().trim().escape(),
   ],
   async (req, res) => {
@@ -70,7 +67,9 @@ router.post(
     try {
       const existingPoll = await Poll.findOne({ question }).exec();
       if (existingPoll)
-        return fourHundo([{ msg: 'Poll already exists', value: question }]);
+        return fourHundo([
+          { msg: 'That poll already exists', value: question },
+        ]);
 
       const setVotesTo0 = options.map(
         (option) => new Option({ option, votes: 0 }),

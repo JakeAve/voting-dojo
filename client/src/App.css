@@ -1,0 +1,151 @@
+:root {
+  --background: #f5f5f5;
+  --foreground: #404040;
+  --accent-1: dodgerblue;
+  --accent-2: mediumseagreen;
+  --contrast-color: white;
+}
+
+* {
+  color: var(--foreground);
+}
+
+.main-header {
+  text-align: center;
+  background: var(--background);
+  padding: 2rem;
+  margin: 2.5rem;
+}
+
+.content {
+  padding: 2rem;
+  margin: 2.5rem;
+  background: var(--background);
+  display: grid;
+  /* grid-template: auto 1fr / 1fr 1fr; */
+}
+
+.nav-btn-container {
+  margin: 2.5rem;
+  display: block;
+  text-align: end;
+}
+
+.btn {
+  padding: 0.5rem 1rem;
+  background: var(--accent-1);
+  color: var(--contrast-color);
+  text-decoration: none;
+  border: none;
+}
+
+.btn:focus,
+.btn:hover {
+  text-decoration: underline;
+}
+
+.nav-btn {
+  background: var(--accent-1);
+}
+
+.polls-summary {
+  display: grid;
+  grid-template: auto / 50% 50%;
+  gap: 1rem;
+}
+
+.poll-summary {
+  border: 1px solid var(--foreground);
+}
+
+.poll-summary a {
+  color: var(--accent-1);
+}
+
+.poll-votes-summary {
+  display: flex;
+  justify-content: start;
+  flex-wrap: wrap;
+}
+
+.poll-votes-summary span {
+  margin-inline-end: 1rem;
+}
+
+.new-poll-form {
+  margin-top: 2rem;
+  display: grid;
+  grid-template: auto / 1fr 1fr;
+}
+
+.form-group {
+  padding: 0 1rem;
+}
+
+.red-required,
+.red-required::before,
+.new-poll-form .required::before {
+  content: '* ';
+  color: red;
+}
+
+.new-poll-form textarea {
+  height: 10rem;
+  resize: none;
+}
+
+.new-poll-form label {
+  display: block;
+}
+
+.new-poll-form textarea,
+.new-poll-form input,
+.new-poll-form button {
+  display: block;
+  margin: 0.5rem 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.new-poll-form button {
+  color: var(--contrast-color);
+  background: var(--accent-2);
+  border: none;
+}
+
+.new-poll-form button {
+  background: var(--accent-2);
+}
+
+.poll-and-results {
+  display: grid;
+  grid-template: 1fr 1fr / 1fr 1fr;
+  place-items: center;
+}
+
+.poll-question {
+  text-align: center;
+  grid-column: 1 / span 2;
+}
+
+.poll-and-results h3 {
+  text-align: center;
+}
+
+.accent-2 {
+  background: var(--accent-2);
+}
+
+.results-list {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  grid-column: 2;
+  width: 100%;
+}
+
+.results-list li {
+  grid-template: auto / 50% 50%;
+  display: grid;
+  justify-content: space-between;
+}
