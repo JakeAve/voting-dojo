@@ -5,7 +5,13 @@ const app = express();
 
 connectDB();
 
+app.use(express.json({ extended: false }));
+
 app.get('/', (req, res) => res.send('API Running'));
+
+// Routes
+app.use('/api/polls', require('./routes/polls'));
+app.use('/api/vote', require('./routes/vote'));
 
 const PORT = process.env.PORT || 5000;
 
