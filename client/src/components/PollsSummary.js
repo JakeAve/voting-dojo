@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getPolls } from '../actions/getPolls';
 import moment from 'moment';
@@ -60,9 +60,14 @@ export default function PollsSummary() {
 
   return (
     <section className="polls-summary">
-      <div>{renderedTop3}</div>
-      <div>{renderSorted}</div>
-      <h2></h2>
+      <div>
+        <h2>Top 3 Polls</h2>
+        {renderedTop3}
+      </div>
+      <div>
+        <h2>All Polls</h2>
+        {renderSorted}
+      </div>
     </section>
   );
 }
