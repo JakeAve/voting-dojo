@@ -2,6 +2,7 @@ import React, { useState, useEffect, Fragment } from 'react';
 import { useRouteMatch } from 'react-router-dom';
 import { getPoll } from '../actions/getPoll';
 import { vote } from '../actions/vote';
+import htmlDecode from '../actions/htmlDecode';
 
 export default function Poll() {
   const [poll, setPoll] = useState({ question: '', options: [] });
@@ -19,7 +20,7 @@ export default function Poll() {
         <ul className="results-list">
           {poll.options.map(({ option, votes, _id }) => (
             <li key={_id}>
-              <span>{option}</span>
+              <span>{htmlDecode(option)}</span>
               <span>{votes + ' votes'}</span>
             </li>
           ))}
@@ -27,24 +28,27 @@ export default function Poll() {
       </Fragment>
     );
   } else {
-    content = poll.options.map(({ option, _id }, i) => (
-      <div>
-        <h3>{option}</h3>
-        <button
-          className={'btn ' + (i % 2 ? 'accent-2' : '')}
-          key={_id}
-          onClick={() => {
-            vote(poll._id, _id).then(() => setVoted(true));
-          }}
-        >
-          {'Vote ' + option}
-        </button>
-      </div>
-    ));
+    content = poll.options.map(({ option: rawOption, _id }, i) => {
+      const option = htmlDecode(rawOption);
+      return (
+        <div key={_id}>
+          <h3>{option}</h3>
+          <button
+            className={'btn ' + (i % 2 ? 'accent-2' : '')}
+            key={_id}
+            onClick={() => {
+              vote(poll._id, _id).then(() => setVoted(true));
+            }}
+          >
+            {'Vote ' + option}
+          </button>
+        </div>
+      );
+    });
   }
   return (
     <section className="poll-and-results">
-      <h2 className="poll-question">{poll.question}</h2>
+      <h2 className="poll-question">{htmlDecode(poll.question)}</h2>
       {content}
     </section>
   );

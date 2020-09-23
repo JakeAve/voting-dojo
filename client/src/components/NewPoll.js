@@ -51,7 +51,6 @@ export class newPoll extends Component {
               onChange={this.handleChange}
             ></textarea>
           </label>
-          <button className="btn">Submit</button>
         </div>
         <div className="form-group">
           <label className="required">
@@ -93,7 +92,10 @@ export class newPoll extends Component {
             />
           </label>
         </div>
-        <div className="red-required">Indicates required field</div>
+        <div>
+          <button className="btn">Submit</button>
+          <div className="red-required">Indicates required field</div>
+        </div>
       </form>
     );
   }

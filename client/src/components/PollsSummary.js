@@ -2,16 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { getPolls } from '../actions/getPolls';
 import moment from 'moment';
+import htmlDecode from '../actions/htmlDecode';
 
 function pollSummary(poll) {
   const { _id, question, options, date } = poll;
   return (
     <div key={_id} className="poll-summary">
-      <Link to={`/polls/${_id}`}>{question}</Link>
+      <Link to={`/polls/${_id}`}>{htmlDecode(question)}</Link>
       <div className="poll-votes-summary">
         {options.map(({ _id: oId, option, votes }) => (
           <span key={oId}>
-            {option}: <strong>{votes}</strong>
+            {htmlDecode(option)}: <strong>{votes}</strong>
           </span>
         ))}
       </div>
