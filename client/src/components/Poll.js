@@ -33,9 +33,8 @@ export default function Poll() {
         <button
           className={'btn ' + (i % 2 ? 'accent-2' : '')}
           key={_id}
-          onClick={async () => {
-            await vote(poll._id, _id);
-            setVoted(true);
+          onClick={() => {
+            vote(poll._id, _id).then(() => setVoted(true));
           }}
         >
           {'Vote ' + option}

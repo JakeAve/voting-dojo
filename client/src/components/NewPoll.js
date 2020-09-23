@@ -79,7 +79,6 @@ export class newPoll extends Component {
             <input
               name="option-3"
               type="text"
-              value={this.state}
               value={this.state.option3}
               onChange={this.handleChange}
             />
@@ -89,7 +88,6 @@ export class newPoll extends Component {
             <input
               name="option-4"
               type="text"
-              value={this.state}
               value={this.state.option4}
               onChange={this.handleChange}
             />
